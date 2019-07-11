@@ -12,6 +12,7 @@ import GoogleMaps
 class MainMapViewController: UIViewController {
 
     var mapView: GMSMapView?
+    var currentDestination: Destination?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +23,11 @@ class MainMapViewController: UIViewController {
     
     func setupStartPosition() {
         
-        let camera = GMSCameraPosition.camera(withLatitude: 40.689910, longitude: -74.045095, zoom: 17)
+        let baseLocation = CLLocationCoordinate2DMake(40.689928, -74.047560)
+        let camera = GMSCameraPosition.camera(withLatitude: baseLocation.latitude, longitude: baseLocation.longitude, zoom: 18.0)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         view = mapView
         
-        let baseLocation = CLLocationCoordinate2DMake(40.689910, -74.045095)
         let marker = GMSMarker(position: baseLocation)
         marker.title = "Liberty Island"
         marker.snippet = "Flagpole Plaza"
@@ -34,7 +35,39 @@ class MainMapViewController: UIViewController {
     }
     
     @IBAction func goButton(_ sender: UIBarButtonItem) {
-        print("Go")
+        
+        if currentDestination == nil {
+            
+            currentDestination = Destination.locations.first
+            
+            mapView?.camera = GMSCameraPosition.camera(withTarget: currentDestination!.location, zoom: currentDestination!.zoom)
+            
+            let marker = GMSMarker(position: currentDestination!.location)
+            marker.title = "..."
+            marker.snippet = ",,,"
+            marker.map = mapView
+            
+        } else {
+            
+            if let index = Destination.locations.firstIndex(of: currentDestination!) {
+                
+                if index + 1 < Destination.locations.count {
+                    currentDestination = Destination.locations[index + 1]
+                } else {
+                    currentDestination = Destination.locations.first
+                }
+                
+                mapView?.camera = GMSCameraPosition.camera(withTarget: currentDestination!.location, zoom: currentDestination!.zoom)
+                
+                let marker = GMSMarker(position: currentDestination!.location)
+                marker.title = "..."
+                marker.snippet = ",,,"
+                marker.map = mapView
+            } else {
+                currentDestination = nil
+            }
+        }
+        
     }
 
 }

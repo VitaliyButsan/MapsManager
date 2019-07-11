@@ -12,6 +12,7 @@
 		58C6FB1922D76993004A9573 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C6FB1722D76993004A9573 /* Main.storyboard */; };
 		58C6FB1B22D76996004A9573 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58C6FB1A22D76996004A9573 /* Assets.xcassets */; };
 		58C6FB1E22D76996004A9573 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C6FB1C22D76996004A9573 /* LaunchScreen.storyboard */; };
+		58C6FB2A22D783FE004A9573 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C6FB2922D783FE004A9573 /* Destination.swift */; };
 		ABF3F2FF93D0756E5E5838FE /* Pods_MapsManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9910689CA1366C91B4F9A1 /* Pods_MapsManager.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +25,7 @@
 		58C6FB1A22D76996004A9573 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		58C6FB1D22D76996004A9573 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		58C6FB1F22D76996004A9573 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58C6FB2922D783FE004A9573 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		8B9910689CA1366C91B4F9A1 /* Pods_MapsManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapsManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D94EF912EAD9643C5794A476 /* Pods-MapsManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapsManager.release.xcconfig"; path = "Target Support Files/Pods-MapsManager/Pods-MapsManager.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,6 +65,7 @@
 			children = (
 				58C6FB2622D76D75004A9573 /* ViewControllers */,
 				58C6FB2722D76D82004A9573 /* Storyboards */,
+				58C6FB2822D78395004A9573 /* DataModel */,
 				58C6FB2522D76D62004A9573 /* Support files */,
 			);
 			path = MapsManager;
@@ -93,6 +96,14 @@
 				58C6FB1C22D76996004A9573 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		58C6FB2822D78395004A9573 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				58C6FB2922D783FE004A9573 /* Destination.swift */,
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 		5B97A0CBEC2E558DCF202E7A /* Frameworks */ = {
@@ -229,6 +240,7 @@
 			files = (
 				58C6FB1622D76993004A9573 /* MainMapViewController.swift in Sources */,
 				58C6FB1422D76993004A9573 /* AppDelegate.swift in Sources */,
+				58C6FB2A22D783FE004A9573 /* Destination.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
