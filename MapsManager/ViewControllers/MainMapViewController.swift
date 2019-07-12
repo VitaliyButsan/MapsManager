@@ -34,21 +34,15 @@ class MainMapViewController: UIViewController {
         marker.map = mapView
     }
     
+    var marker: GMSMarker?
+    
     @IBAction func goButton(_ sender: UIBarButtonItem) {
         
         if currentDestination == nil {
-            
             currentDestination = Destination.locations.first
-            
-            mapView?.camera = GMSCameraPosition.camera(withTarget: currentDestination!.location, zoom: currentDestination!.zoom)
-            
-            let marker = GMSMarker(position: currentDestination!.location)
-            marker.title = "..."
-            marker.snippet = ",,,"
-            marker.map = mapView
+            setCameraLocation()
             
         } else {
-            
             if let index = Destination.locations.firstIndex(of: currentDestination!) {
                 
                 if index + 1 < Destination.locations.count {
@@ -57,17 +51,21 @@ class MainMapViewController: UIViewController {
                     currentDestination = Destination.locations.first
                 }
                 
-                mapView?.camera = GMSCameraPosition.camera(withTarget: currentDestination!.location, zoom: currentDestination!.zoom)
-                
-                let marker = GMSMarker(position: currentDestination!.location)
-                marker.title = "..."
-                marker.snippet = ",,,"
-                marker.map = mapView
-            } else {
-                currentDestination = nil
+                setCameraLocation()
             }
         }
+    }
+    
+    func setCameraLocation() {
+        CATransaction.begin()
+        CATransaction.setValue(2, forKey: kCATransactionAnimationDuration)
+        mapView?.animate(to: GMSCameraPosition.camera(withTarget: currentDestination!.location, zoom: currentDestination!.zoom))
+        CATransaction.commit()
         
+        marker = GMSMarker(position: currentDestination!.location)
+        marker?.title = "..."
+        marker?.snippet = ",,,"
+        marker?.map = mapView
     }
 
 }
